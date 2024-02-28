@@ -34,7 +34,7 @@ THeSeuS
 =======
 
 
-    Add a short description here!
+    This is a code to calculate the THz spectra.
 
 
 A longer description of your project goes here...
