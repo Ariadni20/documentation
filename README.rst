@@ -34,7 +34,7 @@ THeSeuS
 =======
 
 
-    This is a code to calculate the THz spectra.
+    Automating Spectra Simulation with Ease
 
 THeSeuS is a Python package designed to streamline the simulation of IR/Raman and THz spectra. It interfaces seamlessly with electronic structure codes such as FHIaims and DFTB+ for spectrum calculations at both DFT and DFTB levels.
 
@@ -48,5 +48,3 @@ A standout feature of THeSeuS is its full automation. Users can utilize the pack
 Note
 ====
 
-This project has been set up using PyScaffold 4.5. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
