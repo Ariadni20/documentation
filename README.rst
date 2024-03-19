@@ -34,9 +34,6 @@ THeSeuSS
 ========
 
 .. image:: theseuss-high-resolution-logo-transparent.png
-    :width: 100px
-
-    Automating Spectra Simulation with Ease
 
 THeSeuS is a Python package designed to streamline the simulation of IR/Raman and THz spectra. It interfaces seamlessly with electronic structure codes such as FHIaims and DFTB+ for spectrum calculations at both DFT and DFTB levels.
 
