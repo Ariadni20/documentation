@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>theseus package &mdash; THeSeuS 0.0.post1.dev11+g2667f64 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=80d420d8"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="theseus" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            THeSeuS
+          </a>
+              <div class="version">
+                0.0.post1.dev11+g2667f64
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributions &amp; Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Module Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">theseus package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-theseus.CheckSuccessOutput">theseus.CheckSuccessOutput module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.CheckSuccessOutput.single_successful_output"><code class="docutils literal notranslate"><span class="pre">single_successful_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.CheckSuccessOutput.successful_output"><code class="docutils literal notranslate"><span class="pre">successful_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.CheckSuccessOutput.successful_output_dispersion_DFTBplus"><code class="docutils literal notranslate"><span class="pre">successful_output_dispersion_DFTBplus()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-constants-module">theseus.Constants module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-coordinates-module">theseus.Coordinates module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-eigenvectorsfrequenciesphonopy-module">theseus.EigenvectorsFrequenciesPHONOPY module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-theseus.FiniteDisplacements_phonopy">theseus.FiniteDisplacements_phonopy module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.create_dir"><code class="docutils literal notranslate"><span class="pre">create_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.diff_lines"><code class="docutils literal notranslate"><span class="pre">diff_lines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.diff_lines_threshold"><code class="docutils literal notranslate"><span class="pre">diff_lines_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.displaced_element"><code class="docutils literal notranslate"><span class="pre">displaced_element()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.displacements"><code class="docutils literal notranslate"><span class="pre">displacements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.even_odd_numbers"><code class="docutils literal notranslate"><span class="pre">even_odd_numbers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.iterate_over_files"><code class="docutils literal notranslate"><span class="pre">iterate_over_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.move_file"><code class="docutils literal notranslate"><span class="pre">move_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.FiniteDisplacements_phonopy.rename"><code class="docutils literal notranslate"><span class="pre">rename()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-irramanspectra-module">theseus.IRRamanSpectra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-inputoutputfiles-module">theseus.InputOutputFiles module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-theseus.InputsPreparation">theseus.InputsPreparation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.InputsPreparation.GeometryProcessor"><code class="docutils literal notranslate"><span class="pre">GeometryProcessor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.InputsPreparation.check_similarities_of_coord"><code class="docutils literal notranslate"><span class="pre">check_similarities_of_coord()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.InputsPreparation.copy_files_in_dir"><code class="docutils literal notranslate"><span class="pre">copy_files_in_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theseus.InputsPreparation.copy_files_in_the_same_directory"><code class="docutils literal notranslate"><span class="pre">copy_files_in_the_same_directory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-mapatoms-module">theseus.MapAtoms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-plotspectra-module">theseus.PlotSpectra module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-submitcalculations-module">theseus.SubmitCalculations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theseus-twopointcentraldifference-module">theseus.TwoPointCentralDifference module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-theseus">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">THeSeuS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">theseus</a></li>
+      <li class="breadcrumb-item active">theseus package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/theseus.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="theseus-package">
+<h1>theseus package<a class="headerlink" href="#theseus-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-theseus.CheckSuccessOutput">
+<span id="theseus-checksuccessoutput-module"></span><h2>theseus.CheckSuccessOutput module<a class="headerlink" href="#module-theseus.CheckSuccessOutput" title="Link to this heading"></a></h2>
+<p>It checks if the single point calculations have been succesfully finished.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.CheckSuccessOutput.single_successful_output">
+<span class="sig-prename descclassname"><span class="pre">theseus.CheckSuccessOutput.</span></span><span class="sig-name descname"><span class="pre">single_successful_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/CheckSuccessOutput.html#single_successful_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.CheckSuccessOutput.single_successful_output" title="Link to this definition"></a></dt>
+<dd><p>It checks if the cell and geometry optimization calculation has been successful (FHIaims).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.CheckSuccessOutput.successful_output">
+<span class="sig-prename descclassname"><span class="pre">theseus.CheckSuccessOutput.</span></span><span class="sig-name descname"><span class="pre">successful_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/CheckSuccessOutput.html#successful_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.CheckSuccessOutput.successful_output" title="Link to this definition"></a></dt>
+<dd><p>It checks if the single point calculation
+related to frozen phonon approximation
+has been successful.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.CheckSuccessOutput.successful_output_dispersion_DFTBplus">
+<span class="sig-prename descclassname"><span class="pre">theseus.CheckSuccessOutput.</span></span><span class="sig-name descname"><span class="pre">successful_output_dispersion_DFTBplus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/CheckSuccessOutput.html#successful_output_dispersion_DFTBplus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.CheckSuccessOutput.successful_output_dispersion_DFTBplus" title="Link to this definition"></a></dt>
+<dd><p>It checks if the single point calculation
+related to frozen phonon approximation as well as
+polarizability calculation in DFTB+ has been successful
+while dispersion is applied.</p>
+</dd></dl>
+
+</section>
+<section id="theseus-constants-module">
+<h2>theseus.Constants module<a class="headerlink" href="#theseus-constants-module" title="Link to this heading"></a></h2>
+</section>
+<section id="theseus-coordinates-module">
+<h2>theseus.Coordinates module<a class="headerlink" href="#theseus-coordinates-module" title="Link to this heading"></a></h2>
+</section>
+<section id="theseus-eigenvectorsfrequenciesphonopy-module">
+<h2>theseus.EigenvectorsFrequenciesPHONOPY module<a class="headerlink" href="#theseus-eigenvectorsfrequenciesphonopy-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-theseus.FiniteDisplacements_phonopy">
+<span id="theseus-finitedisplacements-phonopy-module"></span><h2>theseus.FiniteDisplacements_phonopy module<a class="headerlink" href="#module-theseus.FiniteDisplacements_phonopy" title="Link to this heading"></a></h2>
+<p>Creation of the subdirectories of the finite displaced geometries.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.create_dir">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">create_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#create_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.create_dir" title="Link to this definition"></a></dt>
+<dd><p>Creation of folders.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.diff_lines">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">diff_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#diff_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.diff_lines" title="Link to this definition"></a></dt>
+<dd><p>It compares two files line by line and returns the line
+as a number if the two lines are different.
+It also returns the axis of the displacement.
+This information is used later on for mapping the equivalent atoms.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.diff_lines_threshold">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">diff_lines_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#diff_lines_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.diff_lines_threshold" title="Link to this definition"></a></dt>
+<dd><p>It compares two lines with three records each. In case
+the difference between two records is 0 and the difference
+between the third record is either 0.02 for aims and 0.01
+for dftb+ respectively, the function returns the axis of the
+displeced coordinate, (x or y or z).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.displaced_element">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">displaced_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no_of_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#displaced_element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.displaced_element" title="Link to this definition"></a></dt>
+<dd><p>In FHIaims input file - geometry.in, the first lines
+correspond to the cell. The atoms - coordinates start appearing
+from the 6th line.
+In DFTB+ input file - geo.gen, the first lines correspond to a comment
+and number of atoms. The atoms - coordinates start appearing
+from the 3th line.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.displacements">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">displacements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#displacements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.displacements" title="Link to this definition"></a></dt>
+<dd><p>It returns a dictionary with the geometry files with the same
+displaced coordinate. It also returns the number and coordinate of atom
+that has been displaced.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.even_odd_numbers">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">even_odd_numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#even_odd_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.even_odd_numbers" title="Link to this definition"></a></dt>
+<dd><p>It returns the sign of the displacement.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.iterate_over_files">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">iterate_over_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#iterate_over_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.iterate_over_files" title="Link to this definition"></a></dt>
+<dd><p>Iterate over all input files and move them
+into subdirectories. Rename the input file names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.move_file">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">move_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#move_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.move_file" title="Link to this definition"></a></dt>
+<dd><p>Move files into directories.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.FiniteDisplacements_phonopy.rename">
+<span class="sig-prename descclassname"><span class="pre">theseus.FiniteDisplacements_phonopy.</span></span><span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/FiniteDisplacements_phonopy.html#rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.FiniteDisplacements_phonopy.rename" title="Link to this definition"></a></dt>
+<dd><p>Rename files.</p>
+</dd></dl>
+
+</section>
+<section id="theseus-irramanspectra-module">
+<h2>theseus.IRRamanSpectra module<a class="headerlink" href="#theseus-irramanspectra-module" title="Link to this heading"></a></h2>
+</section>
+<section id="theseus-inputoutputfiles-module">
+<h2>theseus.InputOutputFiles module<a class="headerlink" href="#theseus-inputoutputfiles-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-theseus.InputsPreparation">
+<span id="theseus-inputspreparation-module"></span><h2>theseus.InputsPreparation module<a class="headerlink" href="#module-theseus.InputsPreparation" title="Link to this heading"></a></h2>
+<p>Preparation and modification of input files</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theseus.InputsPreparation.</span></span><span class="sig-name descname"><span class="pre">GeometryProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geom_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#GeometryProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.9/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class for exctracting information out of a geometry input file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor.geom_input">
+<span class="sig-name descname"><span class="pre">geom_input</span></span><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor.geom_input" title="Link to this definition"></a></dt>
+<dd><p>Namefile of the geometry input file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor.code">
+<span class="sig-name descname"><span class="pre">code</span></span><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor.code" title="Link to this definition"></a></dt>
+<dd><p>Code</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3.9/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor.number_of_atoms">
+<span class="sig-name descname"><span class="pre">number_of_atoms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#GeometryProcessor.number_of_atoms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor.number_of_atoms" title="Link to this definition"></a></dt>
+<dd><p>It returns the number of atoms in the structure.</p>
+<dl class="simple">
+<dt>index: int</dt><dd><p>Nunmber of atoms in a given geometry input file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor.read_coordinates">
+<span class="sig-name descname"><span class="pre">read_coordinates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#GeometryProcessor.read_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor.read_coordinates" title="Link to this definition"></a></dt>
+<dd><p>It returns the coordinates from the geometry input file.</p>
+<dl class="simple">
+<dt>coord<span class="classifier">list</span></dt><dd><p>List containing coordinate tuples as floats.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor.read_lattice">
+<span class="sig-name descname"><span class="pre">read_lattice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#GeometryProcessor.read_lattice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor.read_lattice" title="Link to this definition"></a></dt>
+<dd><p>It returns the lattice cell (9 elements) from the geometry input file.</p>
+<dl class="simple">
+<dt>cell: list</dt><dd><p>List containing the lattice cell elements as floats.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.GeometryProcessor.read_the_atom_type">
+<span class="sig-name descname"><span class="pre">read_the_atom_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#GeometryProcessor.read_the_atom_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.GeometryProcessor.read_the_atom_type" title="Link to this definition"></a></dt>
+<dd><p>It returns the atom type of the atoms of the structure from the geometry input file.</p>
+<dl class="simple">
+<dt>atom_type_no: tuple</dt><dd><p>Tuple containing lists of atom type numbers.</p>
+</dd>
+<dt>atom_type: tuple</dt><dd><p>Tuple containing lists of atom types.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.check_similarities_of_coord">
+<span class="sig-prename descclassname"><span class="pre">theseus.InputsPreparation.</span></span><span class="sig-name descname"><span class="pre">check_similarities_of_coord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_of_line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#check_similarities_of_coord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.check_similarities_of_coord" title="Link to this definition"></a></dt>
+<dd><p>It returns True if the coordinates are the same.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.copy_files_in_dir">
+<span class="sig-prename descclassname"><span class="pre">theseus.InputsPreparation.</span></span><span class="sig-name descname"><span class="pre">copy_files_in_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#copy_files_in_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.copy_files_in_dir" title="Link to this definition"></a></dt>
+<dd><p>Copy input files in the generated directories.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theseus.InputsPreparation.copy_files_in_the_same_directory">
+<span class="sig-prename descclassname"><span class="pre">theseus.InputsPreparation.</span></span><span class="sig-name descname"><span class="pre">copy_files_in_the_same_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/theseus/InputsPreparation.html#copy_files_in_the_same_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#theseus.InputsPreparation.copy_files_in_the_same_directory" title="Link to this definition"></a></dt>
+<dd><p>It copies a file in the same directory.</p>
+</dd></dl>
+
+</section>
+<section id="theseus-mapatoms-module">
+<h2>theseus.MapAtoms module<a class="headerlink" href="#theseus-mapatoms-module" title="Link to this heading"></a></h2>
+</section>
+<section id="theseus-plotspectra-module">
+<h2>theseus.PlotSpectra module<a class="headerlink" href="#theseus-plotspectra-module" title="Link to this heading"></a></h2>
+</section>
+<section id="theseus-submitcalculations-module">
+<h2>theseus.SubmitCalculations module<a class="headerlink" href="#theseus-submitcalculations-module" title="Link to this heading"></a></h2>
+</section>
+<section id="theseus-twopointcentraldifference-module">
+<h2>theseus.TwoPointCentralDifference module<a class="headerlink" href="#theseus-twopointcentraldifference-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-theseus">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-theseus" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="theseus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ariadni20.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

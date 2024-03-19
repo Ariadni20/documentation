@@ -1,0 +1,109 @@
+theseus package
+===============
+
+Submodules
+----------
+
+theseus.CheckSuccessOutput module
+---------------------------------
+
+.. automodule:: theseus.CheckSuccessOutput
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.Constants module
+------------------------
+
+.. automodule:: theseus.Constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.Coordinates module
+--------------------------
+
+.. automodule:: theseus.Coordinates
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.EigenvectorsFrequenciesPHONOPY module
+---------------------------------------------
+
+.. automodule:: theseus.EigenvectorsFrequenciesPHONOPY
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.FiniteDisplacements\_phonopy module
+-------------------------------------------
+
+.. automodule:: theseus.FiniteDisplacements_phonopy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.IRRamanSpectra module
+-----------------------------
+
+.. automodule:: theseus.IRRamanSpectra
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.InputOutputFiles module
+-------------------------------
+
+.. automodule:: theseus.InputOutputFiles
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.InputsPreparation module
+--------------------------------
+
+.. automodule:: theseus.InputsPreparation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.MapAtoms module
+-----------------------
+
+.. automodule:: theseus.MapAtoms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.PlotSpectra module
+--------------------------
+
+.. automodule:: theseus.PlotSpectra
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.SubmitCalculations module
+---------------------------------
+
+.. automodule:: theseus.SubmitCalculations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+theseus.TwoPointCentralDifference module
+----------------------------------------
+
+.. automodule:: theseus.TwoPointCentralDifference
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: theseus
+   :members:
+   :undoc-members:
+   :show-inheritance:

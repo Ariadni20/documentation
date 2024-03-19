@@ -1,0 +1,7 @@
+theseus
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   theseus

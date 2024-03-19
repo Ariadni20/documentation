@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>theseus.FiniteDisplacements_phonopy &mdash; THeSeuS 0.0.post1.dev2+g1a228f1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=d47f86c1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            THeSeuS
+          </a>
+              <div class="version">
+                0.0.post1.dev2+g1a228f1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributions &amp; Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/modules.html">Module Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">THeSeuS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">theseus.FiniteDisplacements_phonopy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for theseus.FiniteDisplacements_phonopy</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Creation of the subdirectories of the finite displaced geometries.&quot;&quot;&quot;</span>
+
+<span class="c1">#AUTHOR: Ariadni Boziki</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">difflib</span>
+<span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<div class="viewcode-block" id="even_odd_numbers">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.even_odd_numbers">[docs]</a>
+<span class="k">def</span> <span class="nf">even_odd_numbers</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;It returns the sign of the displacement.&quot;&quot;&quot;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="n">sign</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">sign</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span>
+	<span class="k">return</span> <span class="n">sign</span></div>
+
+
+
+<div class="viewcode-block" id="diff_lines_threshold">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.diff_lines_threshold">[docs]</a>
+<span class="k">def</span> <span class="nf">diff_lines_threshold</span><span class="p">(</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It compares two lines with three records each. In case   </span>
+<span class="sd">    the difference between two records is 0 and the difference</span>
+<span class="sd">    between the third record is either 0.02 for aims and 0.01 </span>
+<span class="sd">    for dftb+ respectively, the function returns the axis of the</span>
+<span class="sd">    displeced coordinate, (x or y or z).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;aims&#39;</span><span class="p">):</span>
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;dftb+&#39;</span><span class="p">):</span>
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">list1_tmp</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">line1</span><span class="p">]</span>
+    <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list1_tmp</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;aims&#39;</span><span class="p">):</span>
+        <span class="n">line2</span> <span class="o">=</span> <span class="n">file2</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;dftb+&#39;</span><span class="p">):</span>
+        <span class="n">line2</span> <span class="o">=</span> <span class="n">file2</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">list2_tmp</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">line2</span><span class="p">]</span>
+    <span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list2_tmp</span><span class="p">]</span>
+
+    <span class="n">diff_1_tmp</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">list2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">diff_2_tmp</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">list2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">diff_3_tmp</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">list2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">diff_1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">diff_1_tmp</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">diff_2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">diff_2_tmp</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">diff_3</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">diff_3_tmp</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">diff_1</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diff_1</span><span class="p">)</span>
+    <span class="n">diff_2</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diff_2</span><span class="p">)</span>
+    <span class="n">diff_3</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diff_3</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;aims&#39;</span><span class="p">):</span>
+        <span class="n">value_disp</span> <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;dftb+&#39;</span><span class="p">):</span>
+        <span class="n">value_disp</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">diff_1</span> <span class="o">==</span> <span class="n">value_disp</span><span class="p">):</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">diff_2</span> <span class="o">==</span> <span class="n">value_disp</span><span class="p">):</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">diff_3</span> <span class="o">==</span> <span class="n">value_disp</span><span class="p">):</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
+
+    <span class="k">return</span> <span class="n">axis</span></div>
+
+
+
+<div class="viewcode-block" id="diff_lines">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.diff_lines">[docs]</a>
+<span class="k">def</span> <span class="nf">diff_lines</span><span class="p">(</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It compares two files line by line and returns the line</span>
+<span class="sd">    as a number if the two lines are different. </span>
+<span class="sd">    It also returns the axis of the displacement.</span>
+<span class="sd">    This information is used later on for mapping the equivalent atoms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">no_of_line</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final_line_1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">final_line_2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">final_no_of_line</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">line_file1</span><span class="p">,</span> <span class="n">line_file2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">line_file1</span> <span class="o">!=</span> <span class="n">line_file2</span><span class="p">:</span>
+            <span class="n">final_line_1</span> <span class="o">=</span> <span class="n">line_file1</span>
+            <span class="n">final_line_2</span> <span class="o">=</span> <span class="n">line_file2</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="n">diff_lines_threshold</span><span class="p">(</span><span class="n">final_line_1</span><span class="p">,</span> <span class="n">final_line_2</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+            <span class="n">final_no_of_line</span> <span class="o">=</span> <span class="n">no_of_line</span>
+        <span class="n">no_of_line</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span>  <span class="n">final_no_of_line</span><span class="p">,</span> <span class="n">axis</span></div>
+
+
+
+<div class="viewcode-block" id="displaced_element">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.displaced_element">[docs]</a>
+<span class="k">def</span> <span class="nf">displaced_element</span><span class="p">(</span><span class="n">no_of_line</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In FHIaims input file - geometry.in, the first lines</span>
+<span class="sd">    correspond to the cell. The atoms - coordinates start appearing</span>
+<span class="sd">    from the 6th line.</span>
+<span class="sd">    In DFTB+ input file - geo.gen, the first lines correspond to a comment</span>
+<span class="sd">    and number of atoms. The atoms - coordinates start appearing</span>
+<span class="sd">    from the 3th line.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;aims&#39;</span><span class="p">):</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="s1">&#39;dftb+&#39;</span><span class="p">):</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="mi">2</span>
+        
+    <span class="n">no_of_element</span> <span class="o">=</span> <span class="n">no_of_line</span> <span class="o">-</span> <span class="n">number</span>
+
+    <span class="k">return</span> <span class="n">no_of_element</span> </div>
+
+
+
+<div class="viewcode-block" id="displacements">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.displacements">[docs]</a>
+<span class="k">def</span> <span class="nf">displacements</span><span class="p">(</span><span class="n">input_file_name</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;It returns a dictionary with the geometry files with the same </span>
+<span class="sd">    displaced coordinate. It also returns the number and coordinate of atom</span>
+<span class="sd">    that has been displaced.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+	
+    <span class="n">case_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+    <span class="n">contents_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">contents</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">input_file_name</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">contents_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">contents_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">contents_list</span><span class="p">)</span>
+    <span class="n">chunk</span> <span class="o">=</span> <span class="p">[</span><span class="n">contents_list</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">contents_list</span><span class="p">),</span> <span class="mi">2</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">:</span>
+        <span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">file2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">no_of_line</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">diff_lines</span><span class="p">(</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">no_of_element</span> <span class="o">=</span> <span class="n">displaced_element</span><span class="p">(</span><span class="n">no_of_line</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+        <span class="n">no1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">no2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">no1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">no1</span><span class="p">)</span>
+        <span class="n">no2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">no2</span><span class="p">)</span>
+        <span class="n">case_dict</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">no1</span><span class="p">,</span> <span class="n">no2</span><span class="p">,</span> <span class="n">no_of_element</span><span class="p">,</span> <span class="n">axis</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">case_dict</span></div>
+
+
+
+<div class="viewcode-block" id="create_dir">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.create_dir">[docs]</a>
+<span class="k">def</span> <span class="nf">create_dir</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">no_element</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Creation of folders.&quot;&quot;&quot;</span>
+
+	<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Coord-</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">no_element</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">sign</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="rename">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.rename">[docs]</a>
+<span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Rename files.&quot;&quot;&quot;</span>
+
+	<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="move_file">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.move_file">[docs]</a>
+<span class="k">def</span> <span class="nf">move_file</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Move files into directories.&quot;&quot;&quot;</span>
+
+	<span class="n">src_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+	<span class="n">dst_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dst_path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+	<span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="iterate_over_files">
+<a class="viewcode-back" href="../../api/theseus.html#theseus.FiniteDisplacements_phonopy.iterate_over_files">[docs]</a>
+<span class="k">def</span> <span class="nf">iterate_over_files</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">input_file_name</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;Iterate over all input files and move them </span>
+<span class="sd">	into subdirectories. Rename the input file names.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+
+	<span class="n">drct</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+	<span class="n">files</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">drct</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+	<span class="n">disp</span> <span class="o">=</span> <span class="n">displacements</span><span class="p">(</span><span class="n">input_file_name</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+
+	<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="n">file</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+		<span class="n">namefile</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+		<span class="n">namefile</span> <span class="o">=</span> <span class="n">namefile</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">namefile</span><span class="p">)</span>
+		<span class="n">number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+		<span class="n">sign</span> <span class="o">=</span> <span class="n">even_odd_numbers</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>		
+
+		<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">disp</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+			<span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">number</span> <span class="o">==</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+				
+				<span class="n">create_dir</span><span class="p">(</span><span class="n">namefile</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">values</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+				<span class="n">created_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Coord-</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">values</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">namefile</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">sign</span><span class="si">}</span><span class="s1">&#39;</span>
+
+				<span class="n">dst_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">drct</span><span class="p">,</span> <span class="n">created_dir</span><span class="p">)</span>		
+
+				<span class="n">move_file</span><span class="p">(</span><span class="n">drct</span><span class="p">,</span> <span class="n">dst_path</span><span class="p">,</span> <span class="n">namefile</span><span class="p">)</span>
+
+				<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">created_dir</span><span class="p">)</span>
+				<span class="n">rename</span><span class="p">(</span><span class="n">namefile</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>	
+				<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Ariadni20.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
